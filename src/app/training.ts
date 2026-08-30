@@ -1,4 +1,4 @@
-export function sum (a: number, b: number): number {
+export function sum(a: number, b: number): number {
   return a + b;
 }
 
@@ -76,8 +76,8 @@ const users: IUser[] = [
   }
 ];
 
-const filteredUsers: IUser[] = users.filter((user:IUser) => {
-  return user.city === 'Almaty'
+const filteredUsers: IUser[] = users.filter((user: IUser) => {
+  return user.city === 'Almaty';
 });
 
-console.log(filteredUsers)
+console.log(filteredUsers);
