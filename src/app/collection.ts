@@ -1,4 +1,5 @@
 class Collection<T> {
+
   private items: T[];
 
   constructor(items: T[] = []) {
@@ -26,6 +27,7 @@ class Collection<T> {
       this.items[index] = replacement;
     }
   }
+
 }
 
 const nameCollection: Collection<string> = new Collection(['Apple', 'banana', 'orange']);
