@@ -32,4 +32,5 @@ export class AppComponent {
     const count: number = Number(visitCount);
     localStorage.setItem('visitCount', (count + 1).toString());
   }
+
 }
