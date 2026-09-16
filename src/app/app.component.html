@@ -1,1 +1,51 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<main>
+  <section class="hero">
+    <header class="header">
+      <div class="header__inner">
+        <div class="logo">
+          <img src="/images/logo-icon.svg" [alt]="companyName">
+          <p class="logo__description">{{companyName}}</p>
+        </div>
+        <nav class="header__nav">
+          <a id="nav-home-link" href="#">Главная</a>
+          <a id="nav-guide-link" href="#">Про гида</a>
+          <a id="nav-program-link" href="#">Программа тура</a>
+          <a id="nav-price-link" href="#">Стоимость</a>
+          <a id="nav-blog-link" href="#">Блог</a>
+          <a id="nav-contacts-link" href="#">Контакты</a>
+        </nav>
+        <button id="header-consultation-btn" class="btn btn--header">Консультация</button>
+      </div>
+    </header>
+    <div class="container-title-form">
+      <div class="hero__title-container">
+        <h1 class="hero__title">Насладись прогулкой в горах <br> с командой единомышленников</h1>
+      </div>
+
+      <form class="search-form">
+        <div class="container-form">
+          <div class="search-form__field">
+            <select id="location" class="search-form__select">
+              <option value="">Локация для тура</option>
+            </select>
+            <span class="search-form__hint">выберите из списка</span>
+          </div>
+
+          <div class="search-form__field">
+            <input id="date" type="text" class="search-form__input" placeholder="Дата похода" readonly/>
+            <span class="search-form__hint">укажите дату</span>
+          </div>
+
+          <div class="search-form__field">
+            <select id="participants" class="search-form__select">
+              <option value="">Участники</option>
+            </select>
+            <span class="search-form__hint">выберите из списка</span>
+          </div>
+
+          <button type="button" id="search-submit-btn" class="btn search-form__submit">Найти программу</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
