@@ -27,26 +27,26 @@ export class AppComponent implements OnDestroy {
 
   private timerId: ReturnType<typeof setInterval> | null = null;
 
-  readonly companyName: string = 'Румтибет';
+  companyName: string = 'Румтибет';
 
-  readonly programs: IProgram[] = [
+  programs: IProgram[] = [
     {
       id: 1,
       title: 'Опытный гид',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      image: '/images/tour-programs-guide.svg'
+      image: 'guide'
     },
     {
       id: 2,
       title: 'Безопасный поход',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      image: '/images/tour-programs-safety.svg'
+      image: 'safety'
     },
     {
       id: 3,
       title: 'Лояльные цены',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      image: '/images/tour-programs-prices.svg'
+      image: 'prices'
     }
   ];
 
@@ -74,7 +74,7 @@ export class AppComponent implements OnDestroy {
   }
 
   private stopTimer(): void {
-    if(this.timerId !== null) {
+    if (this.timerId !== null) {
       clearInterval(this.timerId);
     }
   }
@@ -84,7 +84,7 @@ export class AppComponent implements OnDestroy {
   }
 
   decrement(): void {
-    if(this.count > 0) {
+    if (this.count > 0) {
       this.count--;
     }
   }

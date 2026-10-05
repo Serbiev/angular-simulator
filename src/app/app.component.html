@@ -28,12 +28,24 @@
                 <p class="header__timer">{{ currentDate | date: 'dd.MM.yyyy H:mm:ss' }}</p>
               } @else {
                   <div class="header__counter">
-                    <button type="button" (click)="decrement()" [disabled]="count === 0">-</button>
+                    <button
+                      id="decrement-button"
+                      type="button"
+                      (click)="decrement()"
+                      [disabled]="count === 0">
+                       -
+                    </button>
                     <span>{{ count }}</span>
-                    <button type="button" (click)="increment()">+</button>
+                    <button
+                      id="increment-button"
+                      type="button"
+                      (click)="increment()">
+                      +
+                    </button>
                   </div>
                 }
               <button
+                id="toggle-widget-button"
                 type="button" 
                 class="header__widget-btn"
                 (click)="toggleWidget()"
@@ -44,12 +56,12 @@
           </div>
         </div>
       </header>
-  
+
       <div class="container-title-form">
         <div class="hero__title-container">
           <h1 class="hero__title">Насладись прогулкой в горах <br> с командой единомышленников</h1>
         </div>
-  
+
         <form class="search-form">
           <div class="container-form">
             <div class="search-form__field">
@@ -60,7 +72,7 @@
                 class="search-form__select"
                 >
                 <option value="">Локация для тура</option>
-  
+
                 <option value="grand-canyon">Гранд-Каньон, США</option>
                 <option value="yellowstone">Йеллоустонский парк, США</option>
                 <option value="yosemite">Йосемитский парк, США</option>
@@ -68,7 +80,7 @@
               </select>
               <span class="search-form__hint">выберите из списка</span>
             </div>
-  
+
             <div class="search-form__field">
               <div class="search-form__date">
                 <input
@@ -85,16 +97,16 @@
               </div>
               <span class="search-form__hint">укажите дату</span>
             </div>
-  
+
             <div class="search-form__field">
-              <select 
+              <select
                 [(ngModel)]="participants"
                 id="participants"
                 name="participants"
                 class="search-form__select"
                 >
                 <option value="">Участники</option>
-  
+
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -102,7 +114,7 @@
               </select>
               <span class="search-form__hint">выберите из списка</span>
             </div>
-  
+
             <button
               type="button"
               id="search-submit-btn"
@@ -128,7 +140,7 @@
       </div>
     </section>
   </main>
-  
+
   <section class="tour-intro">
     <div class="tour-intro__content">
   
@@ -137,13 +149,13 @@
         <img class="tour-intro__image-cabin" src="/images/tour-intro-cabin.png" alt="Домик в горах">
         <img  class="tour-intro__image-play" src="/images/play-icon.svg" alt="Воспроизвести видео">
       </div>
-  
+
       <div class="tour-intro__text">
         <div class="tour-intro__heading">
           <p class="tour-intro__eyebrow">о нашем походе</p>
           <h2 class="tour-intro__title">Исследуйте все горные массивы мира вместе с нами</h2>
         </div>
-  
+
         <div>
           <p class="tour-intro__description">
             Его корни уходят в один фрагмент классической латыни 45 года н.э.,
@@ -153,7 +165,7 @@
             "consectetur"и занялся его поисками в классической латинской литературе.
           </p>
         </div>
-  
+
         <button
           type="button"
           id="tour-program-button"
@@ -164,30 +176,35 @@
       </div>
     </div>
   </section>
-  
+
   <section class="tour-programs">
     <div class="tour-programs__content">
   
-      <div  class="tour-programs__text">
+      <div class="tour-programs__text">
         <p class="tour-programs__eyebrow">наше предложение</p>
         <h2 class="tour-programs__title">Лучшие программы для тебя</h2>
       </div>
-  
+
       <div>
         <p class="tour-programs__description">
           Его корни уходят в один фрагмент классической латыни 45 года н.э.,
           то есть более двух тысячелетий назад.
           Ричард МакКлинток, профессор латыни из колледжа.</p>
       </div>
-  
+
       <div class="tour-programs__service">
         @for (program of programs; track program.id) {
           <div
+            [id]="'tour-program-option-' + program.id"
             class="tour-programs__service-list"
             [class.active-program]="serviceProgramId === program.id"
             (mouseenter)="setActiveProgram(program.id)"
             >
-            <img class="tour-programs__service-icon" [src]="program.image" [alt]="program.title">
+            <img
+              class="tour-programs__service-icon"
+              [src]="'/images/tour-programs-' + program.image + '.svg'"
+              [alt]="program.title"
+              >
             <div class="tour-programs__service-text">
               <h3 class="tour-programs__service-title">{{ program.title }}</h3>
               <p class="tour-programs__service-description">{{ program.description }}</p>
@@ -195,7 +212,7 @@
           </div>
         }
       </div>
-  
+
       <button
         type="button"
         id="tour-program-price-button"
@@ -204,7 +221,7 @@
         Стоимость программ
       </button>
     </div>
-  
+
     <div class="tour-programs__images-list">
       <img class="tour-programs__images" src="/images/tour-programs-lake.png" alt="озеро и рука">
       <img class="tour-programs__images" src="/images/tour-programs-hiker.png" alt="турист у скалы">
