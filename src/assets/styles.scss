@@ -5,12 +5,14 @@
   font-family: 'Nunito Sans';
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-  --pri--primary-color: #18121E;
-  --white-color: #FDFDFD;
+  --primary-color: #18121E;
   --secondary-color: #F2BE22;
+  --background-color: #F3F5F4;
+  --white-color: #FDFDFD;
 }
 
 .btn {
@@ -20,4 +22,10 @@
   line-height: 20px;
   background-color: #1A3E3E;
   color: var(--white-color);
+  cursor: pointer;
+
+   &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }

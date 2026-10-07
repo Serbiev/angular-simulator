@@ -1,51 +1,232 @@
-<main>
-  <section class="hero">
-    <header class="header">
-      <div class="header__inner">
-        <div class="logo">
-          <img src="/images/logo-icon.svg" [alt]="companyName">
-          <p class="logo__description">{{companyName}}</p>
+@if (isLoading) {
+  <div class="loader">
+    <img class="loader__icon" src="/images/loading.png" alt="Loading">
+  </div>
+} @else {
+  <main>
+    <section class="hero">
+      <header class="header">
+        <div class="header__inner">
+          <div class="logo">
+            <img src="/images/logo-icon.svg" [alt]="companyName">
+            <p class="logo__description">{{companyName}}</p>
+          </div>
+          <nav class="header__nav">
+            <a id="nav-home-link" href="#">Главная</a>
+            <a id="nav-guide-link" href="#">Про гида</a>
+            <a id="nav-program-link" href="#">Программа тура</a>
+            <a id="nav-price-link" href="#">Стоимость</a>
+            <a id="nav-blog-link" href="#">Блог</a>
+            <a id="nav-contacts-link" href="#">Контакты</a>
+          </nav>
+          <div class="header__actions">
+            <button id="header-consultation-btn" class="btn btn--header">
+              Консультация
+            </button>
+            <div class="header__widget" [class.header__widget--timer]='isTimerShown'>
+              @if (isTimerShown) {
+                <p class="header__timer">{{ currentDate | date: 'dd.MM.yyyy H:mm:ss' }}</p>
+              } @else {
+                  <div class="header__counter">
+                    <button
+                      id="decrement-button"
+                      type="button"
+                      (click)="decrement()"
+                      [disabled]="count === 0">
+                       -
+                    </button>
+                    <span>{{ count }}</span>
+                    <button
+                      id="increment-button"
+                      type="button"
+                      (click)="increment()">
+                      +
+                    </button>
+                  </div>
+                }
+              <button
+                id="toggle-widget-button"
+                type="button" 
+                class="header__widget-btn"
+                (click)="toggleWidget()"
+              >
+                {{ isTimerShown ? 'Показать кликер' : 'Показать дату'}}
+              </button>
+            </div>
+          </div>
         </div>
-        <nav class="header__nav">
-          <a id="nav-home-link" href="#">Главная</a>
-          <a id="nav-guide-link" href="#">Про гида</a>
-          <a id="nav-program-link" href="#">Программа тура</a>
-          <a id="nav-price-link" href="#">Стоимость</a>
-          <a id="nav-blog-link" href="#">Блог</a>
-          <a id="nav-contacts-link" href="#">Контакты</a>
-        </nav>
-        <button id="header-consultation-btn" class="btn btn--header">Консультация</button>
-      </div>
-    </header>
-    <div class="container-title-form">
-      <div class="hero__title-container">
-        <h1 class="hero__title">Насладись прогулкой в горах <br> с командой единомышленников</h1>
-      </div>
+      </header>
 
-      <form class="search-form">
-        <div class="container-form">
-          <div class="search-form__field">
-            <select id="location" class="search-form__select">
-              <option value="">Локация для тура</option>
-            </select>
-            <span class="search-form__hint">выберите из списка</span>
-          </div>
-
-          <div class="search-form__field">
-            <input id="date" type="text" class="search-form__input" placeholder="Дата похода" readonly/>
-            <span class="search-form__hint">укажите дату</span>
-          </div>
-
-          <div class="search-form__field">
-            <select id="participants" class="search-form__select">
-              <option value="">Участники</option>
-            </select>
-            <span class="search-form__hint">выберите из списка</span>
-          </div>
-
-          <button type="button" id="search-submit-btn" class="btn search-form__submit">Найти программу</button>
+      <div class="container-title-form">
+        <div class="hero__title-container">
+          <h1 class="hero__title">Насладись прогулкой в горах <br> с командой единомышленников</h1>
         </div>
-      </form>
+
+        <form class="search-form">
+          <div class="container-form">
+            <div class="search-form__field">
+              <select
+                [(ngModel)]="location"
+                id="location"
+                name="location"
+                class="search-form__select"
+              >
+                <option value="">Локация для тура</option>
+
+                <option value="grand-canyon">Гранд-Каньон, США</option>
+                <option value="yellowstone">Йеллоустонский парк, США</option>
+                <option value="yosemite">Йосемитский парк, США</option>
+                <option value="niagara-falls">Ниагарский водопад, США</option>
+              </select>
+              <span class="search-form__hint">выберите из списка</span>
+            </div>
+
+            <div class="search-form__field">
+              <div class="search-form__date">
+                <input
+                  [(ngModel)]="date"
+                  id="date"
+                  name="date"
+                  type="date"
+                  class="search-form__input"
+                  [class.search-form__input--empty]="!date"
+                />
+                @if (!date) {
+                  <span class="search-form__placeholder">Дата похода</span>
+                }
+              </div>
+              <span class="search-form__hint">укажите дату</span>
+            </div>
+
+            <div class="search-form__field">
+              <select
+                [(ngModel)]="participants"
+                id="participants"
+                name="participants"
+                class="search-form__select"
+              >
+                <option value="">Участники</option>
+
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <span class="search-form__hint">выберите из списка</span>
+            </div>
+
+            <button
+              type="button"
+              id="search-submit-btn"
+              class="btn search-form__submit"
+              [disabled]="!location || !date || !participants"
+            >
+              Найти программу
+            </button>
+          </div>
+        </form>
+        <div class="live-input-container">
+          <div class="live-input-wrapper">
+            <input
+              class="live-input"
+              name="inputValue"
+              id="live-input"
+              [(ngModel)]="inputValue"
+            >
+            <img class="live-input__arrow" src="/images/arrow-icon.svg" alt=""/>
+          </div>
+          <span class="live-output">{{ inputValue }}</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="tour-intro">
+    <div class="tour-intro__content">
+  
+      <div class="tour-intro__images">
+        <img class="tour-intro__image-mountains" src="/images/tour-intro-mountains.png" alt="Горы в облаках">
+        <img class="tour-intro__image-cabin" src="/images/tour-intro-cabin.png" alt="Домик в горах">
+        <img  class="tour-intro__image-play" src="/images/play-icon.svg" alt="Воспроизвести видео">
+      </div>
+
+      <div class="tour-intro__text">
+        <div class="tour-intro__heading">
+          <p class="tour-intro__eyebrow">о нашем походе</p>
+          <h2 class="tour-intro__title">Исследуйте все горные массивы мира вместе с нами</h2>
+        </div>
+
+        <div>
+          <p class="tour-intro__description">
+            Его корни уходят в один фрагмент классической латыни 45 года н.э.,
+            то есть более двух тысячелетий назад. Ричард МакКлинток,
+            профессор латыни из колледжа Hampden-Sydney, штат Вирджиния,
+            взял одно из самых странных слов в Lorem Ipsum,
+            "consectetur"и занялся его поисками в классической латинской литературе.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          id="tour-program-button"
+          class="btn tour-intro__button"
+        >
+          Программа тура
+        </button>
+      </div>
     </div>
   </section>
-</main>
+
+  <section class="tour-programs">
+    <div class="tour-programs__content">
+  
+      <div class="tour-programs__text">
+        <p class="tour-programs__eyebrow">наше предложение</p>
+        <h2 class="tour-programs__title">Лучшие программы для тебя</h2>
+      </div>
+
+      <div>
+        <p class="tour-programs__description">
+          Его корни уходят в один фрагмент классической латыни 45 года н.э.,
+          то есть более двух тысячелетий назад.
+          Ричард МакКлинток, профессор латыни из колледжа.</p>
+      </div>
+
+      <div class="tour-programs__service">
+        @for (program of programs; track program.id) {
+          <div
+            [id]="'tour-program-option-' + program.id"
+            class="tour-programs__service-list"
+            [class.active-program]="serviceProgramId === program.id"
+            (mouseenter)="setActiveProgram(program.id)"
+          >
+            <img
+              class="tour-programs__service-icon"
+              [src]="'/images/tour-programs-' + program.image + '.svg'"
+              [alt]="program.title"
+            >
+            <div class="tour-programs__service-text">
+              <h3 class="tour-programs__service-title">{{ program.title }}</h3>
+              <p class="tour-programs__service-description">{{ program.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <button
+        type="button"
+        id="tour-program-price-button"
+        class="btn tour-programs__button"
+      >
+        Стоимость программ
+      </button>
+    </div>
+
+    <div class="tour-programs__images-list">
+      <img class="tour-programs__images" src="/images/tour-programs-lake.png" alt="озеро и рука">
+      <img class="tour-programs__images" src="/images/tour-programs-hiker.png" alt="турист у скалы">
+      <img class="tour-programs__images" src="/images/tour-programs-snow.png" alt="горы и снег">
+      <img class="tour-programs__images" src="/images/tour-programs-valley.png" alt="долина и горы">
+    </div>
+  </section>
+}
