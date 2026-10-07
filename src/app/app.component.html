@@ -49,7 +49,7 @@
                 type="button" 
                 class="header__widget-btn"
                 (click)="toggleWidget()"
-                >
+              >
                 {{ isTimerShown ? 'Показать кликер' : 'Показать дату'}}
               </button>
             </div>
@@ -65,12 +65,12 @@
         <form class="search-form">
           <div class="container-form">
             <div class="search-form__field">
-              <select 
+              <select
                 [(ngModel)]="location"
                 id="location"
                 name="location"
                 class="search-form__select"
-                >
+              >
                 <option value="">Локация для тура</option>
 
                 <option value="grand-canyon">Гранд-Каньон, США</option>
@@ -104,7 +104,7 @@
                 id="participants"
                 name="participants"
                 class="search-form__select"
-                >
+              >
                 <option value="">Участники</option>
 
                 <option value="1">1</option>
@@ -120,7 +120,7 @@
               id="search-submit-btn"
               class="btn search-form__submit"
               [disabled]="!location || !date || !participants"
-              >
+            >
               Найти программу
             </button>
           </div>
@@ -170,7 +170,7 @@
           type="button"
           id="tour-program-button"
           class="btn tour-intro__button"
-          >
+        >
           Программа тура
         </button>
       </div>
@@ -199,12 +199,12 @@
             class="tour-programs__service-list"
             [class.active-program]="serviceProgramId === program.id"
             (mouseenter)="setActiveProgram(program.id)"
-            >
+          >
             <img
               class="tour-programs__service-icon"
               [src]="'/images/tour-programs-' + program.image + '.svg'"
               [alt]="program.title"
-              >
+            >
             <div class="tour-programs__service-text">
               <h3 class="tour-programs__service-title">{{ program.title }}</h3>
               <p class="tour-programs__service-description">{{ program.description }}</p>
@@ -217,7 +217,7 @@
         type="button"
         id="tour-program-price-button"
         class="btn tour-programs__button"
-       >
+      >
         Стоимость программ
       </button>
     </div>
