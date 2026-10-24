@@ -170,6 +170,7 @@
           type="button"
           id="tour-program-button"
           class="btn tour-intro__button"
+          (click)="messageService.addMessage('Программа недоступна', MessageType.WARN)"
         >
           Программа тура
         </button>
@@ -199,6 +200,7 @@
             class="tour-programs__service-list"
             [class.active-program]="serviceProgramId === program.id"
             (mouseenter)="setActiveProgram(program.id)"
+            (mouseleave)="setActiveProgram(null)"
           >
             <img
               class="tour-programs__service-icon"
@@ -217,6 +219,7 @@
         type="button"
         id="tour-program-price-button"
         class="btn tour-programs__button"
+        (click)="messageService.addMessage('Стоимость отправлена на почту', MessageType.INFO)"
       >
         Стоимость программ
       </button>
@@ -229,4 +232,106 @@
       <img class="tour-programs__images" src="/images/tour-programs-valley.png" alt="долина и горы">
     </div>
   </section>
+
+  <section class="popular-destinations">
+    <div class="section-title section-title--center">
+      <p class="section-title__subtitle">по версии отдыхающих</p>
+      <h2 class="section-title__title">Популярные направления</h2>
+    </div>
+    <div class="popular-destination__list">
+      @for (destination of destinations; track destination.id) {
+        <article class="destination-card">
+          <img
+            class="destination-card__image"
+            [src]="'/images/popular-destinations-' + destination.image + '.png'"
+            [alt]="destination.title"
+          >
+          <div class="destination-card__rating">
+            <img
+              class="destination-card__star"
+              src="/images/star.svg"
+              alt="star"
+              width="24px"
+              height="24px"
+            >
+            <span class="destination-card__number">{{ destination.rating | number: '1.1-1' }}</span>
+          </div>
+  
+          <div class="destination-card__info">
+            <div>
+              <h2 class="destination-card__title">{{ destination.title }}</h2>
+              <p class="destination-card__description">{{ destination.description }}</p>
+            </div>
+            <span class="destination-card__price">{{ destination.price + ' $' }}</span>
+          </div>
+        </article>
+      }
+    </div>
+      <button
+        class="btn destination-btn"
+        id="destinations-submit-btn"
+        (click)="messageService.addMessage('Направления получены', MessageType.SUCCESS)">
+        Рейтинг направлений
+      </button>
+  </section>
+
+  <section class="travel-blog">
+    <div class="section-title section-title--center">
+      <p class="section-title__subtitle">делимся впечатлениями</p>
+      <h2 class="section-title__title">Блог о путешествиях</h2>
+    </div>
+    <div class="travel-blog__list">
+      @for (post of blogPosts; track post.id) {
+        <article class="blog-card">
+          <img
+            class="blog-card__image"
+            [src]="'/images/travel-blog-' + post.image + '.png'"
+            [alt]="post.title"
+          >
+          <div class="blog-card__content">
+            <h3
+              [class.post-active]="blogPostId === post.id"
+              (mouseenter)="setActivePost(post.id)"
+              (mouseleave)="setActivePost(null)"
+              class="blog-card__title">
+              {{ post.title }}
+            </h3>
+            <p class="blog-card__description">{{ post.description }}</p>
+            <div class="blog-card__footer">
+              <time class="blog-card__date" datetime="">{{ post.date }}</time>
+              <a class="blog-card__link" href="#">читать статью</a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+    <button
+      class="materials-btn btn"
+      id="more-materials-btn"
+      (click)="messageService.addMessage('Материалы недоступны', MessageType.ERROR)">
+      Другие материалы
+    </button>
+  </section>
+
+  <div class="toast-list">
+    @for (message of messageService.getMessages(); track message.id) {
+        <ng-container
+          [ngTemplateOutlet]="messageTemplate"
+          [ngTemplateOutletContext]="{ $implicit: message }"
+        ></ng-container>
+    }
+  </div>
 }
+
+  <ng-template #messageTemplate let-message>
+    <div class="toast">
+      <img class="toast__icon" src="/images/mail-icon.png" alt="icon">
+      <div class="toast__content">
+        <h3 class="toast__title">{{ message.type | titlecase }}</h3>
+        <p class="toast__text">{{ message.text }}</p>
+      </div>
+      <button class="toast__close" id="close-message-btn" (click)="messageService.closeMessage(message.id)">
+        <img src="/images/delete-icon.png" alt="delete">
+      </button>
+    </div>
+  </ng-template>
