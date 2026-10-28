@@ -705,7 +705,7 @@
 .toast-list {
   position: fixed;
   top: 20px;
-  left: 65%;
+  left: 58%;
   transform: translateX(-50%);
   width: min(1180px, calc(100vw - 20px));
   z-index: 1000;
@@ -731,6 +731,8 @@
   width: 40px;
   height: 40px;
   margin-left: 15px;
+  color: #E8E9EB;
+  filter: brightness(0) invert(1);
 }
 
 .toast__title {

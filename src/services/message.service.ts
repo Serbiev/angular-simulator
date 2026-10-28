@@ -24,12 +24,12 @@ export class MessageService {
     this.messages.unshift(newMessage);
 
     setTimeout(() => {
-      this.closeMessage(newMessage.id)
+      this.closeMessage(newMessage.id);
     }, 5000);
   }
 
   closeMessage(id: number): void {
-    this.messages = this.messages.filter(msg => msg.id !== id);
+    this.messages = this.messages.filter((msg: IMessage) => msg.id !== id);
   }
 
 }
