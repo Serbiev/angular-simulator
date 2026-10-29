@@ -180,7 +180,7 @@ export class AppComponent implements OnDestroy {
   }
 
   private saveVisitCount(): void {
-    const visitCount = this.storageService.getItem<number>('visitCount');
+    const visitCount: number | null = this.storageService.getItem<number>('visitCount');
     const count: number = visitCount ?? 0;
     this.storageService.setItem('visitCount', count + 1);
   }

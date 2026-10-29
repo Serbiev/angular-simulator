@@ -315,10 +315,10 @@
 
   <div class="toast-list">
     @for (message of messageService.getMessages(); track message.id) {
-        <ng-container
-          [ngTemplateOutlet]="messageTemplate"
-          [ngTemplateOutletContext]="{ $implicit: message }"
-        ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="messageTemplate"
+        [ngTemplateOutletContext]="{ $implicit: message }"
+      ></ng-container>
     }
   </div>
 }
