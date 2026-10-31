@@ -321,6 +321,39 @@
       ></ng-container>
     }
   </div>
+
+  <section class="gallery">
+    <div class="section-title gallery__title section-title--center">
+      <p class="section-title__subtitle">фото-отчет</p>
+      <h2 class="section-title__title">Делимся впечатлениями</h2>
+    </div>
+    <div class="gallery__list">
+      <img class="gallery__image" src="/images/gallery-balloons.png" alt="ballons" width="580px" height="250px">
+      <img class="gallery__image" src="/images/gallery-camera.png" alt="camera" width="280px" height="250px">
+      <img class="gallery__image" src="/images/gallery-burj.png" alt="burj" width="280px" height="250px">
+      <img class="gallery__image" src="/images/gallery-coast.png" alt="coast" width="280px" height="250px">
+      <img class="gallery__image" src="/images/gallery-canyon.png" alt="canyon" width="580px" height="250px">
+      <img class="gallery__image" src="/images/gallery-flatlay.png" alt="flatlay" width="280px" height="250px">
+    </div>
+    <button class="gallery__button btn" id="gallery-button-submit">Наш pinterest</button>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__subscribe">
+      <div class="section-title footer__title section-title--narrow">
+        <p class="section-title__subtitle footer__description">актуально</p>
+        <h2 class="section-title__title footer__subtitle">Получайте полезные рассылки о путешествиях</h2>
+      </div>
+      <form class="footer__subscribe-form">
+        <label class="footer__subscribe-label" for="email-input">Введите e-mail адрес</label>
+        <input class="footer__subscribe-input" type="email" id="email-input">
+        <button class="footer__subscribe-button btn" id="footer-subscribe-submit">Подписаться на новости</button>
+        <div class="footer__subscribe-description">
+          <p class="footer__subscribe-agreement">подписываясь на новости, вы автоматически соглашаетесь с условиями обработки персональных данных и правилами рекламных рассылок</p>
+        </div>
+      </form>
+    </div>
+  </footer>
 }
 
   <ng-template #messageTemplate let-message>
