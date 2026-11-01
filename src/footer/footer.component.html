@@ -1,0 +1,104 @@
+<footer class="footer">
+  <div class="footer__subscribe">
+    <div class="section-title footer__title section-title--narrow">
+      <p class="section-title__subtitle footer__description">актуально</p>
+      <h2 class="section-title__title footer__subtitle">Получайте полезные рассылки о путешествиях</h2>
+    </div>
+    <form class="footer__subscribe-form">
+      <div class="footer__subscribe-text">
+        <div class="footer__subscribe-container">
+          <label
+            class="footer__subscribe-label"
+            for="email-input">
+            Введите e-mail адрес
+          </label>
+          <input
+            class="footer__subscribe-input"
+            type="email" id="email-input"
+            placeholder="name@domain.com"
+          >
+        </div>
+        <div class="footer__subscribe-btn">
+          <button
+            class="footer__subscribe-button btn"
+            id="footer-subscribe-submit">
+            Подписаться на новости
+          </button>
+        </div>
+      </div>
+      <div class="footer__subscribe-description">
+        <p
+          class="footer__subscribe-agreement">
+          подписываясь на новости, вы автоматически соглашаетесь с 
+          <a href="#" class="footer__subscribe-link">
+            условиями обработки персональных данных
+          </a>
+            и
+          <a href="#" class="footer__subscribe-link">
+            правилами рекламных рассылок
+          </a>
+        </p>
+      </div>
+    </form>
+  </div>
+  <div class="footer__main">
+    <div class="footer__container">
+      <div class="footer__company">
+        <h3 class="footer__company-title">Компания «РумТибет»</h3>
+        <p
+          class="footer__company-text">
+          Его корни уходят в один фрагмент классической латыни 45 года
+          <br>н.э.,то есть более двух тысячелетий назад.
+          Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
+        </p>
+        <div class="footer__company-contacts">
+          <a class="footer__company-link" href="mailto:info@domain.com">info@domain.com</a>
+          <a class="footer__company-link" href="tel:+7 (123) 456-78-90">+7 (123) 456-78-90</a>
+        </div>
+        <div class="footer__company-socials">
+
+          <img src="/images/tg-icon.svg" alt="tg" width="32px" height="32px">
+          <img src="/images/vk-icon.svg" alt="vk" width="32px" height="32px">
+          <img src="/images/pinterest-icon.svg" alt="pinterest" width="32px" height="32px">
+          <img src="/images/skype-icon.svg" alt="skype" width="32px" height="32px">
+        </div>
+      </div>
+      <div class="footer__services">
+        <h3 class="footer__services-title">Наши услуги</h3>
+        <ul class="footer__services-list">
+          @for (footerLink of footerLinks; track footerLink.id) {
+            <li class="footer__services-item">
+              <a
+                class="footer__services-link"
+                  [href]="footerLink.link">
+                  <img src="/images/chevron-icon.svg" alt="" class="footer__services-arrow">
+                  {{ footerLink.text }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+      <div class="footer__travel">
+        <h3 class="footer__travel-title">Важно для путешествий</h3>
+        <ul class="footer__travel-list">
+          @for (travelLink of travelLinks; track travelLink.id) {
+            <li class="footer__travel-item">
+              <a
+                class="footer__travel-link"
+                [href]="travelLink.link">
+                <img src="/images/chevron-icon.svg" alt="" class="footer__services-arrow">
+               {{ travelLink.text }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__bottom-text">
+      <p class="footer__bottom-copy">ИП Константинопольский К.К., 2023</p>
+      <a class="footer__bottom-policy" href="#">Политика обработки персональных данных</a>
+    </div>
+  </div>
+</footer>

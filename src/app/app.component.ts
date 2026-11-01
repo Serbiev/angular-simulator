@@ -11,11 +11,12 @@ import { MessageService } from '../services/message.service';
 import { IMessage } from '../interfaces/IMessage';
 import { MessageType } from '../enums/MessageType';
 import { StorageService } from '../services/storage.service';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, DatePipe, DecimalPipe, NgTemplateOutlet, TitleCasePipe],
+  imports: [FormsModule, DatePipe, DecimalPipe, NgTemplateOutlet, TitleCasePipe, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
