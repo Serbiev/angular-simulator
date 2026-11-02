@@ -1,1 +1,51 @@
-<p>header works!</p>
+<header class="header">
+  <div class="header__inner">
+    <div class="logo">
+      <img src="/images/logo-icon.svg" [alt]="companyName">
+      <p class="logo__description">{{companyName}}</p>
+    </div>
+    <nav class="header__nav">
+      <a id="nav-home-link" routerLink="/">Главная</a>
+      <a id="nav-guide-link" routerLink="users">Про гида</a>
+      <a id="nav-program-link" href="#">Программа тура</a>
+      <a id="nav-price-link" href="#">Стоимость</a>
+      <a id="nav-blog-link" href="#">Блог</a>
+      <a id="nav-contacts-link" href="#">Контакты</a>
+    </nav>
+    <div class="header__actions">
+      <button id="header-consultation-btn" class="btn btn--header">
+        Консультация
+      </button>
+      <div class="header__widget" [class.header__widget--timer]='isTimerShown'>
+        @if (isTimerShown) {
+          <p class="header__timer">{{ currentDate | date: 'dd.MM.yyyy H:mm:ss' }}</p>
+        } @else {
+            <div class="header__counter">
+              <button
+                id="decrement-button"
+                type="button"
+                (click)="decrement()"
+                [disabled]="count === 0">
+                  -
+              </button>
+              <span>{{ count }}</span>
+              <button
+                id="increment-button"
+                type="button"
+                (click)="increment()">
+                +
+              </button>
+            </div>
+          }
+        <button
+          id="toggle-widget-button"
+          type="button" 
+          class="header__widget-btn"
+          (click)="toggleWidget()"
+        >
+          {{ isTimerShown ? 'Показать кликер' : 'Показать дату'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
