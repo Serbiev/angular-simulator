@@ -76,6 +76,11 @@
     color: var(--white-color);
     text-decoration: none;
   }
+
+  a.active {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
 }
 
 .logo {

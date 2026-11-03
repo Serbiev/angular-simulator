@@ -1,8 +1,7 @@
 import { Component, inject, } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DecimalPipe, NgTemplateOutlet, TitleCasePipe} from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Color } from '../enums/Сolor';
-import { MessageType } from '../enums/MessageType';
 import { IProgram } from '../interfaces/IProgram';
 import { IBlogPost } from '../interfaces/IBlogPost';
 import { IDestination } from '../interfaces/IDestination';
@@ -11,7 +10,7 @@ import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-home-page',
-  imports: [DecimalPipe, NgTemplateOutlet, TitleCasePipe, FormsModule],
+  imports: [DecimalPipe, FormsModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -27,7 +26,6 @@ export class HomePageComponent {
   isLoading: boolean = false;
   blogPostId: number | null = null;
   serviceProgramId: number | null = null;
-  MessageType: typeof MessageType = MessageType;
 
   images: string[] = ['balloons', 'camera', 'burj', 'coast', 'canyon', 'flatlay'];
 

@@ -1,0 +1,24 @@
+<div class="toast-list">
+  @for (message of messageService.getMessages(); track message.id) {
+    <ng-container
+      [ngTemplateOutlet]="messageTemplate"
+      [ngTemplateOutletContext]="{ $implicit: message }"
+    ></ng-container>
+  }
+</div>
+
+<ng-template #messageTemplate let-message>
+  <div class="toast">
+    <img class="toast__icon" src="/images/mail-icon.svg" alt="icon">
+    <div class="toast__content">
+      <h3 class="toast__title">{{ message.type | titlecase }}</h3>
+      <p class="toast__text">{{ message.text }}</p>
+    </div>
+    <button
+      class="toast__close"
+      [id]="'close-message-btn-' + message.id"
+      (click)="messageService.closeMessage(message.id)">
+      <img src="/images/delete-icon.svg" alt="delete">
+    </button>
+  </div>
+</ng-template>

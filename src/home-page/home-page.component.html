@@ -118,7 +118,7 @@
           type="button"
           id="tour-program-button"
           class="btn tour-intro__button"
-          (click)="messageService.addMessage('Программа недоступна', MessageType.WARN)"
+          (click)="messageService.showWarn('Программа недоступна')"
         >
           Программа тура
         </button>
@@ -167,7 +167,7 @@
         type="button"
         id="tour-program-price-button"
         class="btn tour-programs__button"
-        (click)="messageService.addMessage('Стоимость отправлена на почту', MessageType.INFO)"
+        (click)="messageService.showInfo('Стоимость отправлена на почту')"
       >
         Стоимость программ
       </button>
@@ -218,7 +218,7 @@
       <button
         class="btn destination-btn"
         id="destinations-submit-btn"
-        (click)="messageService.addMessage('Направления получены', MessageType.SUCCESS)">
+        (click)="messageService.showSuccess('Направления получены')">
         Рейтинг направлений
       </button>
   </section>
@@ -256,19 +256,10 @@
     <button
       class="materials-btn btn"
       id="more-materials-btn"
-      (click)="messageService.addMessage('Материалы недоступны', MessageType.ERROR)">
+      (click)="messageService.showError('Материалы недостпуны')">
       Другие материалы
     </button>
   </section>
-
-  <div class="toast-list">
-    @for (message of messageService.getMessages(); track message.id) {
-      <ng-container
-        [ngTemplateOutlet]="messageTemplate"
-        [ngTemplateOutletContext]="{ $implicit: message }"
-      ></ng-container>
-    }
-  </div>
 
   <section class="gallery">
     <div class="section-title gallery__title section-title--center">
@@ -282,21 +273,4 @@
     </div>
     <button class="gallery__button btn" id="gallery-button-submit">Наш pinterest</button>
   </section>
-
 }
-
-<ng-template #messageTemplate let-message>
-  <div class="toast">
-    <img class="toast__icon" src="/images/mail-icon.svg" alt="icon">
-    <div class="toast__content">
-      <h3 class="toast__title">{{ message.type | titlecase }}</h3>
-      <p class="toast__text">{{ message.text }}</p>
-    </div>
-    <button
-        class="toast__close"
-        [id]="'close-message-btn-' + message.id"
-        (click)="messageService.closeMessage(message.id)">
-        <img src="/images/delete-icon.svg" alt="delete">
-      </button>
-    </div>
-  </ng-template>

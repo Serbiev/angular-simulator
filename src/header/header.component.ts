@@ -1,10 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { INavLink } from '../interfaces/INavLink';
 
 @Component({
   selector: 'app-header',
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -16,6 +17,19 @@ export class HeaderComponent implements OnDestroy {
   isTimerShown: boolean = true;
 
   private timerId: ReturnType<typeof setInterval> | null = null;
+
+  navLink: INavLink[] = [
+    {
+      id: 1,
+      text: 'Главная',
+      path: '/'
+    },
+    {
+      id: 2,
+      text: 'Пользователи',
+      path: '/users',
+    },
+  ];
 
   constructor() {
     this.startTimer();

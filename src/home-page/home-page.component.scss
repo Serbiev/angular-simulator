@@ -579,63 +579,6 @@
   height: 52px;
 }
 
-.toast-list {
-  position: fixed;
-  top: 20px;
-  left: 58%;
-  transform: translateX(-50%);
-  width: min(1180px, calc(100vw - 20px));
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 15px;
-}
-
-.toast {
-  position: relative;
-  width: 350px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background-color: rgba(15, 23, 42, 0.85);
-  border-radius: 10px;
-  border: 1px solid #FFFFFF;
-}
-
-.toast__icon {
-  width: 40px;
-  height: 40px;
-  margin-left: 15px;
-  color: #E8E9EB;
-  filter: brightness(0) invert(1);
-}
-
-.toast__title {
-  font-weight: 716;
-  font-size: 16px;
-  line-height: 20px;
-  color: #E8E9EB;
-}
-
-.toast__text {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #E8E9EB;
-}
-
-.toast__close {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 7px;
-  right: 7px;
-  border: none;
-  background-color: transparent;
-}
-
 .gallery {
   width: 100%;
 

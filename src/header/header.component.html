@@ -5,12 +5,15 @@
       <p class="logo__description">{{companyName}}</p>
     </div>
     <nav class="header__nav">
-      <a id="nav-home-link" routerLink="/">Главная</a>
-      <a id="nav-guide-link" routerLink="users">Про гида</a>
-      <a id="nav-program-link" href="#">Программа тура</a>
-      <a id="nav-price-link" href="#">Стоимость</a>
-      <a id="nav-blog-link" href="#">Блог</a>
-      <a id="nav-contacts-link" href="#">Контакты</a>
+      @for (link of navLink; track link.id) {
+        <a
+          [id]="'nav-link' + link.id"
+          [routerLinkActiveOptions]="{exact: true}"
+          [routerLink]="link.path"
+          routerLinkActive="active">
+          {{ link.text }}
+        </a>
+      }
     </nav>
     <div class="header__actions">
       <button id="header-consultation-btn" class="btn btn--header">
