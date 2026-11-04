@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-users-page',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './users-page.component.scss',
 })
 export class UsersPageComponent {
+
+  messageService: MessageService = inject(MessageService);
 
 }

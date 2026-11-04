@@ -31,11 +31,11 @@
         <p
           class="footer__subscribe-agreement">
           подписываясь на новости, вы автоматически соглашаетесь с 
-          <a href="#" class="footer__subscribe-link">
+          <a id="footer-personal-data-link" href="#" class="footer__subscribe-link">
             условиями обработки персональных данных
           </a>
             и
-          <a href="#" class="footer__subscribe-link">
+          <a id="footer-advertising-rules-link" href="#" class="footer__subscribe-link">
             правилами рекламных рассылок
           </a>
         </p>
@@ -53,8 +53,8 @@
           Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
         </p>
         <div class="footer__company-contacts">
-          <a class="footer__company-link" href="mailto:info@domain.com">info@domain.com</a>
-          <a class="footer__company-link" href="tel:+7 (123) 456-78-90">+7 (123) 456-78-90</a>
+          <a id="footer-email-link" class="footer__company-link" href="mailto:info@domain.com">info@domain.com</a>
+          <a id="footer-phone-link" class="footer__company-link" href="tel:+7 (123) 456-78-90">+7 (123) 456-78-90</a>
         </div>
         <div class="footer__company-socials">
 
@@ -71,9 +71,10 @@
             <li class="footer__services-item">
               <a
                 class="footer__services-link"
-                  [href]="footerLink.link">
-                  <img src="/images/chevron-icon.svg" alt="" class="footer__services-arrow">
-                  {{ footerLink.text }}
+                [id]="'footer-service-link-' + footerLink.id"
+                [href]="footerLink.link">
+                <img src="/images/chevron-icon.svg" alt="" class="footer__services-arrow">
+                {{ footerLink.text }}
               </a>
             </li>
           }
@@ -86,9 +87,10 @@
             <li class="footer__travel-item">
               <a
                 class="footer__travel-link"
+                [id]="'footer-travel-link-' + travelLink.id"
                 [href]="travelLink.link">
                 <img src="/images/chevron-icon.svg" alt="" class="footer__services-arrow">
-               {{ travelLink.text }}
+                {{ travelLink.text }}
               </a>
             </li>
           }
@@ -99,7 +101,7 @@
   <div class="footer__bottom">
     <div class="footer__bottom-text">
       <p class="footer__bottom-copy">ИП Константинопольский К.К., 2023</p>
-      <a class="footer__bottom-policy" href="#">Политика обработки персональных данных</a>
+      <a id="footer-policy-link" class="footer__bottom-policy" href="#">Политика обработки персональных данных</a>
     </div>
   </div>
 </footer>
