@@ -1,0 +1,253 @@
+.footer {
+  position: relative;
+
+  &__title {
+    width: 380px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__description {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+    color: var(--secondary-color);
+  }
+
+  &__subtitle {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 120%;
+    font-weight: 800;
+    color: var(--primary-color);
+  }
+
+  &__subscribe {
+    width: 1180px;
+    height: 196px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0 auto;
+    gap: 64px;
+    padding: 40px 100px 60px 100px;
+    margin-top: 100px;
+    margin-bottom: -98px;
+    position: relative;
+    z-index: 2;
+    background-color: var(--white-color);
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(24, 18, 30, 0.12);
+
+    &-form {
+      width: 536px;
+      height: 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    &-text {
+      display: flex;
+      gap: 16px;
+    }
+
+    &-label {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      color: var(--primary-color);
+    }
+
+    &-input {
+      width: 280px;
+      height: 44px;
+      opacity: 1;
+      border-radius: 4px;
+      padding-right: 16px;
+      padding-left: 16px;
+      background-color: var(--background-color);
+      border: none;
+
+      &::placeholder {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--primary-color);
+      }
+    }
+
+    &-container {
+      width: 280px;
+      height: 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-button {
+      width: 240px;
+      height: 44px;
+    }
+
+    &-btn {
+      padding-top: 27px;
+    }
+
+    &-description {
+      width: 536px;
+      height: 36px;
+      padding-bottom: 40px;
+    }
+
+    &-agreement {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      color: var(--primary-color);
+    }
+
+    &-link {
+      color: inherit;
+    }
+  }
+
+  &__main {
+    width: 100%;
+    height: 521px;
+    padding-top: 80px;
+    background-color: #1A3E3E;
+  }
+
+  &__company {
+    width: 480px;
+    height: 263px;
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      width: 100%;
+      height: 24px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 17px;
+      color: var(--background-color);
+    }
+
+    &-text {
+      width: 100%;
+      height: 60px;
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 80px;
+      color: #FFFFFF;
+    }
+
+    &-contacts {
+      width: 100%;
+      height: 18px;
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    &-link {
+      color: #FFFFFF;
+    }
+
+    &-socials {
+      width: 176px;
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__container {
+    width: 1180px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 80px;
+  }
+
+  &__services,
+  &__travel {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__services-title,
+  &__travel-title {
+    width: 100%;
+    height: 24px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--background-color);
+  }
+
+  &__services-list,
+  &__travel-list {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__services-link,
+  &__travel-link {
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--white-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__services-arrow,
+  &__travel-arrow {
+    width: 6px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+
+  &__bottom {
+    width: 100%;
+    height: 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+
+    &-text {
+      width: 1180px;
+      height: 18px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-copy {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      color: #FFFFFF;
+    }
+
+    &-policy {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      color: #FFFFFF;
+    }
+  }
+}

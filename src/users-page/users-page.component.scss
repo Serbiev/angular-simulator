@@ -1,0 +1,11 @@
+.page {
+  min-height: calc(100vh - 156px);
+  padding: 196px 20px 80px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.page__content {
+  max-width: 1180px;
+  margin: 0 auto;
+}

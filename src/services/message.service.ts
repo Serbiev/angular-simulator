@@ -14,7 +14,23 @@ export class MessageService {
     return this.messages;
   }
 
-  addMessage(text: string, type: MessageType): void {
+  showWarn(text: string): void {
+    this.addMessage(text, MessageType.WARN);
+  }
+
+  showError(text: string): void {
+    this.addMessage(text, MessageType.ERROR);
+  }
+
+  showSuccess(text: string): void {
+    this.addMessage(text, MessageType.SUCCESS);
+  }
+
+  showInfo(text: string): void {
+    this.addMessage(text, MessageType.INFO);
+  }
+
+  private addMessage(text: string, type: MessageType): void {
     const newMessage: IMessage = {
       id: ++this.messageId,
       text: text,
