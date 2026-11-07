@@ -60,3 +60,7 @@
     max-width: 380px;
   }
 }
+
+body:has(.loader) {
+  overflow: hidden;
+}
