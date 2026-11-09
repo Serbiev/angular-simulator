@@ -1,4 +1,10 @@
-<main class="page">
-  <h1>Пользователи</h1>
-  <p>Здесь будет список пользователей.</p>
-</main>
+<div class="user-list">
+  @for (user of users$ |async; track user.id) {
+    <div class="user-card">
+      <div class="user-card__row">
+        <h1>{{ user.name }}</h1>
+        <h2>@{{ user.username }}</h2>
+      </div>
+    </div>
+  }
+</div>
