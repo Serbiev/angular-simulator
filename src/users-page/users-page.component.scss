@@ -137,3 +137,20 @@
     display: flex;
   }
 }
+
+.users-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 558px;
+  height: 105px;
+  border-radius: 20px;
+  background-color: #B15757;
+
+  &__title {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 29.9px;
+    color: #FFFFFF;
+  }
+}

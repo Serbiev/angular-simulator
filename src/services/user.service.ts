@@ -32,7 +32,7 @@ export class UserService {
         this.setUsers(users);
       }),
       catchError(() => {
-        this.messageService.showError('Не удалось загрузить пользователей');
+        this.messageService.showError('Нет пользователей для отображения');
         return of([]);
       }),
       finalize(() => {

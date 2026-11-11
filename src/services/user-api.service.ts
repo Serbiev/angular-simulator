@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class UserApiService {
 
   private http: HttpClient = inject(HttpClient);
-  private url: string = 'https://jsonplaceholder.typicode.com/users';
+  private url: string = 'https://jsonplaceholder.typicode.com/users123';
 
   getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(this.url);
