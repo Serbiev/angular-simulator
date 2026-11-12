@@ -1,5 +1,5 @@
 <div class="toast-list">
-  @for (message of messageService.getMessages(); track message.id) {
+  @for (message of messages$ | async; track message.id) {
     <ng-container
       [ngTemplateOutlet]="messageTemplate"
       [ngTemplateOutletContext]="{ $implicit: message }"
