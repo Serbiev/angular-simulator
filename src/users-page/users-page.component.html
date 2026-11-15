@@ -1,4 +1,87 @@
-<main class="page">
-  <h1>Пользователи</h1>
-  <p>Здесь будет список пользователей.</p>
-</main>
+<div class="users-page">
+  <h1 class="user-title">Список Пользователей</h1>
+  @if (users$ | async; as users) {
+    <div class="user-list">
+      @for (user of users; track user.id) {
+        <div class="user-card">
+          <div class="user-card__header">
+            <h3 class="user-card__name">{{ user.name }}</h3>
+            <p class="user-card__username">&#64;{{ user.username }}</p>
+          </div>
+          <div class="user-card__main">
+            <div class="user-card__section">
+              <h4 class="user-card__section-title">Контакты</h4>
+              <div class="user-card__row">
+                <span class="user-card__label">Эл. почта:</span>
+                <span class="user-card__value user-card__value--accent">{{ user.email }}</span>
+              </div>
+
+              <div class="user-card__row">
+                <span class="user-card__label">Телефон:</span>
+                <span class="user-card__value">{{ user.phone }}</span>
+              </div>
+
+              <div class="user-card__row">
+                <span class="user-card__label">Веб-сайт:</span>
+                <span class="user-card__value user-card__value--accent">{{ user.website }}</span>
+              </div>
+            </div>
+
+            <div class="user-card__section">
+              <h4 class="user-card__section-title">Адрес Проживания</h4>
+              <div class="user-card__row">
+                <span class="user-card__label">Город:</span>
+                <span class="user-card__value">{{ user.address.city }}</span>
+              </div>
+
+              <div class="user-card__row">
+                <span class="user-card__label">Улица:</span>
+                <span class="user-card__value">{{ user.address.street }}</span>
+              </div>
+
+              <div class="user-card__row">
+                <span class="user-card__label">Офис:</span>
+                <span class="user-card__value">{{ user.address.suite }}</span>
+              </div>
+
+              <div class="user-card__row">
+                <span class="user-card__label">Индекс:</span>
+                <span class="user-card__value">{{ user.address.zipcode }}</span>
+              </div>
+
+              <div class="user-card__row">
+                <span class="user-card__label">Координаты:</span>
+                <div class="user-card__geo">
+                  <span class="user-card__value--geo">{{ user.address.geo.lat }}</span>
+                  <span class="user-card__value--geo">{{ user.address.geo.lng }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="user-card__section">
+              <h4 class="user-card__section-title">Место работы</h4>
+              <div class="user-card__row">
+                <span class="user-card__label">Компания:</span>
+                <span class="user-card__value">{{ user.company.name }}</span>
+              </div>
+
+              <div class="user-card__row">
+                <span class="user-card__label">Миссия:</span>
+                <span class="user-card__value user-card__value--italic">{{ user.company.catchPhrase }}</span>
+              </div>
+
+              <div class="user-card__row">
+                <span class="user-card__label">Специализация:</span>
+                <span class="user-card__value">{{ user.company.bs }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <div class="users-empty">
+          <h2 class="users-empty__title">Нет пользователей для отображения</h2>
+        </div>
+      }
+    </div>
+  }
+</div>

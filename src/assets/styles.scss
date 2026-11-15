@@ -13,6 +13,7 @@
   --secondary-color: #F2BE22;
   --background-color: #F3F5F4;
   --white-color: #FDFDFD;
+  --username-color: #D4A373;
 }
 
 .btn {
@@ -59,4 +60,8 @@
   &--narrow {
     max-width: 380px;
   }
+}
+
+body:has(.loader) {
+  overflow: hidden;
 }
