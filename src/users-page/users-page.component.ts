@@ -3,10 +3,11 @@ import { Observable } from 'rxjs';
 import { IUser } from '../interfaces/IUser';
 import { UserService } from '../services/user.service';
 import { AsyncPipe } from '@angular/common';
+import { UserCardComponent } from '../user-card/user-card.component';
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, UserCardComponent],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })

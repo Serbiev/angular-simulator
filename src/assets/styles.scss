@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 :root {
   --primary-color: #18121E;
   --secondary-color: #F2BE22;
