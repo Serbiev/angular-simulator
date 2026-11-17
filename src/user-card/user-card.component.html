@@ -71,4 +71,12 @@
       </div>
     </div>
   </div>
+  <button
+    class="delete-card-btn"
+    type="button"
+    [id]="'delete-user-' + user.id"
+    (click)="onDelete()"
+  >
+    Удалить пользователя
+  </button>
 </div>

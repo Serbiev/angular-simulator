@@ -14,6 +14,15 @@ import { UserCardComponent } from '../user-card/user-card.component';
 export class UsersPageComponent {
 
   private userService: UserService = inject(UserService);
-  users$: Observable<IUser[]> = this.userService.loadUsers();
+  users$: Observable<IUser[]> = this.userService.getUsers();
+
+  constructor() {
+    this.userService.loadUsers()
+      .subscribe();
+  }
+
+  onDeleteUser(id: number): void {
+    this.userService.deleteUser(id);
+  }
 
 }

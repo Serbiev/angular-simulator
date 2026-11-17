@@ -23,6 +23,14 @@ export class UserService {
     return this.usersSubject.asObservable();
   }
 
+  deleteUser(id: number): void {
+    const users: IUser[] = this.usersSubject.value;
+    const updatedUsers: IUser[] = users.filter((user: IUser) => {
+      return user.id !== id;
+    });
+    this.setUsers(updatedUsers);
+  }
+
   loadUsers(): Observable<IUser[]> {
     return defer(() => {
       this.loaderService.showLoader();
