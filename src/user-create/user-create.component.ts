@@ -1,5 +1,22 @@
 import { Component, inject } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { IUser } from '../interfaces/IUser';
+
+type UserFormValue = Omit<IUser, 'id'>;
+
+type ControlsOf<T> = {
+  [K in keyof T]: T[K] extends object
+    ? FormGroup<ControlsOf<T[K]>>
+    : FormControl<T[K]>;
+};
+
+type UserFormControls = ControlsOf<UserFormValue>;
 
 @Component({
   selector: 'app-user-create',
@@ -11,26 +28,26 @@ export class UserCreateComponent {
 
   private fb: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
-  userForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-    username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-    email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
-    phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(25)]],
-    website: ['', Validators.maxLength(100)],
+  userForm: FormGroup<UserFormControls> = this.fb.group<UserFormControls>({
+    name: this.fb.control('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    username: this.fb.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+    email: this.fb.control('', [Validators.required, Validators.email, Validators.maxLength(100)]),
+    phone: this.fb.control('', [Validators.required, Validators.minLength(10), Validators.maxLength(25)]),
+    website: this.fb.control('', [Validators.maxLength(100)]),
     address: this.fb.group({
-      street: ['', [Validators.required, Validators.maxLength(100)]],
-      suite: ['', Validators.maxLength(50)],
-      city: ['', [Validators.required, Validators.maxLength(50)]],
-      zipcode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      street: this.fb.control('', [Validators.required, Validators.maxLength(100)]),
+      suite: this.fb.control('', [Validators.maxLength(50)]),
+      city: this.fb.control('', [Validators.required, Validators.maxLength(50)]),
+      zipcode: this.fb.control('', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]),
       geo: this.fb.group({
-        lat: ['', Validators.required],
-        lng: ['', Validators.required],
+        lat: this.fb.control('', [Validators.required]),
+        lng: this.fb.control('', [Validators.required]),
       }),
     }),
     company: this.fb.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
-      catchPhrase: ['', Validators.maxLength(200)],
-      bs: ['', Validators.maxLength(100)],
+      name: this.fb.control('', [Validators.required, Validators.maxLength(50)]),
+      catchPhrase: this.fb.control('', [Validators.maxLength(200)]),
+      bs: this.fb.control('', [Validators.maxLength(100)]),
     }),
   });
 

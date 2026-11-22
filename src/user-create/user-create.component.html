@@ -1,1 +1,6 @@
-<p>user-create works!</p>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="user-create-field">
+    <label for="user-create-name">Имя</label>
+    <input type="text" id="user-create-name" formControlName="name" />
+  </div>
+</form>
