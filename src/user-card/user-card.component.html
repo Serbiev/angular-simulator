@@ -18,7 +18,7 @@
 
       <div class="user-card__row">
         <span class="user-card__label">Веб-сайт:</span>
-        <span class="user-card__value user-card__value--accent">{{ user.website }}</span>
+        <span class="user-card__value user-card__value--accent">{{ user.website || 'Неизвестно' }}</span>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
 
       <div class="user-card__row">
         <span class="user-card__label">Офис:</span>
-        <span class="user-card__value">{{ user.address.suite }}</span>
+        <span class="user-card__value">{{ user.address.suite || 'Неизвестно' }}</span>
       </div>
 
       <div class="user-card__row">
@@ -57,17 +57,17 @@
       <h4 class="user-card__section-title">Место работы</h4>
       <div class="user-card__row">
         <span class="user-card__label">Компания:</span>
-        <span class="user-card__value">{{ user.company.name }}</span>
+        <span class="user-card__value">{{ user.company.name || 'Неизвестно' }}</span>
       </div>
 
       <div class="user-card__row">
         <span class="user-card__label">Миссия:</span>
-        <span class="user-card__value user-card__value--italic">{{ user.company.catchPhrase }}</span>
+        <span class="user-card__value user-card__value--italic">{{ user.company.catchPhrase  || 'Неизвестно' }}</span>
       </div>
 
       <div class="user-card__row">
         <span class="user-card__label">Специализация:</span>
-        <span class="user-card__value">{{ user.company.bs }}</span>
+        <span class="user-card__value">{{ user.company.bs  || 'Неизвестно' }}</span>
       </div>
     </div>
   </div>

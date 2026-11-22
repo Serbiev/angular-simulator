@@ -1,6 +1,215 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div class="user-create-field">
-    <label for="user-create-name">Имя</label>
-    <input type="text" id="user-create-name" formControlName="name" />
+    <label
+      for="user-create-name"
+      class="user-create-label"
+    >
+      Имя
+    </label>
+    <input
+      type="text"
+      class="user-create-input"
+      id="user-create-name"
+      formControlName="name"
+    />
   </div>
+  <div class="user-create-field">
+    <label
+      for="user-create-username"
+      class="user-create-label"
+    >
+      Никнейм
+    </label>
+    <input
+      type="text"
+      id="user-create-username"
+      formControlName="username"
+      class="user-create-input"
+    />
+  </div>
+  <div class="user-create-field">
+    <label
+      for="user-create-email"
+      class="user-create-label"
+    >
+      Эл.почта
+    </label>
+    <input
+      type="email"
+      id="user-create-email"
+      formControlName="email"
+      class="user-create-input"
+    />
+  </div>
+  <div class="user-create-field">
+    <label
+      for="user-create-phone"
+      class="user-create-label"
+    >
+      Телефон
+    </label>
+    <input
+      type="tel"
+      id="user-create-phone"
+      formControlName="phone"
+      class="user-create-input"
+    />
+  </div>
+  <div class="user-create-field">
+    <label
+      for="user-create-website"
+      class="user-create-label"
+    >
+      Сайт
+    </label>
+    <input
+      type="url"
+      id="user-create-website"
+      formControlName="website"
+      class="user-create-input"
+    />
+  </div>
+  <div formGroupName="address" class="user-create-group">
+    <h3 class="user-create-group-title">Адрес</h3>
+    <div class="user-create-field">
+      <label
+        for="user-create-address-street"
+        class="user-create-label"
+      >
+        Улица
+      </label>
+      <input
+        type="text"
+        id="user-create-address-street"
+        formControlName="street"
+        class="user-create-input"
+      />
+    </div>
+    <div class="user-create-field">
+      <label
+        for="user-create-address-suite"
+        class="user-create-label"
+      >
+        Офис
+      </label>
+      <input
+        type="text"
+        id="user-create-address-suite"
+        formControlName="suite"
+        class="user-create-input"
+      />
+    </div>
+    <div class="user-create-field">
+      <label
+        for="user-create-address-city"
+        class="user-create-label"
+      >
+        Город
+      </label>
+      <input
+        type="text"
+        id="user-create-address-city"
+        formControlName="city"
+        class="user-create-input"
+      />
+    </div>
+    <div class="user-create-field">
+      <label
+        for="user-create-address-zipcode"
+        class="user-create-label"
+      >
+        Индекс
+      </label>
+      <input
+        type="text"
+        id="user-create-address-zipcode"
+        formControlName="zipcode"
+        class="user-create-input"
+      />
+    </div>
+    <div formGroupName="geo" class="user-create-group">
+      <h3 class="user-create-group-title">Координаты</h3>
+      <div class="user-create-field">
+        <label
+          for="user-create-address-geo-lat"
+          class="user-create-label"
+        >
+          Широта
+        </label>
+        <input
+          type="text"
+          id="user-create-address-geo-lat"
+          formControlName="lat"
+          class="user-create-input"
+        />
+      </div>
+      <div class="user-create-field">
+        <label
+          for="user-create-address-geo-lng"
+          class="user-create-label"
+        >
+          Долгота
+        </label>
+        <input
+          type="text"
+          id="user-create-address-geo-lng"
+          formControlName="lng"
+          class="user-create-input"
+        />
+      </div>
+    </div>
+  </div>
+  <div formGroupName="company" class="user-create-group">
+    <h3 class="user-create-group-title">Компания</h3>
+    <div class="user-create-field">
+      <label
+        for="user-create-company-name"
+        class="user-create-label"
+      >
+        Компания
+      </label>
+      <input
+        type="text"
+        id="user-create-company-name"
+        formControlName="name"
+        class="user-create-input"
+      />
+    </div>
+    <div class="user-create-field">
+      <label
+        for="user-create-company-catchPhrase"
+        class="user-create-label"
+      >
+        Миссия
+      </label>
+      <input
+        type="text"
+        id="user-create-company-catchPhrase"
+        formControlName="catchPhrase"
+        class="user-create-input"
+      />
+    </div>
+    <div class="user-create-field">
+      <label
+        for="user-create-company-bs"
+        class="user-create-label"
+      >
+        Специализация
+      </label>
+      <input
+        type="text"
+        id="user-create-company-bs"
+        formControlName="bs"
+        class="user-create-input"
+      />
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="user-create-btn"
+    id="user-create-btn"
+    [disabled]="userForm.invalid"
+  >
+    Создать пользователя
+  </button>
 </form>

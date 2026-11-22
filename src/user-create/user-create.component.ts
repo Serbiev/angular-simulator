@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -28,6 +28,8 @@ export class UserCreateComponent {
 
   private fb: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
+  @Output() createUser = new EventEmitter<IUser>();
+
   userForm: FormGroup<UserFormControls> = this.fb.group<UserFormControls>({
     name: this.fb.control('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     username: this.fb.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
@@ -50,5 +52,14 @@ export class UserCreateComponent {
       bs: this.fb.control('', [Validators.maxLength(100)]),
     }),
   });
+
+  onSubmit(): void {
+    const newUser: IUser = {
+      ...this.userForm.getRawValue(),
+      id: Date.now(),
+    };
+    this.createUser.emit(newUser);
+    this.userForm.reset();
+  }
 
 }

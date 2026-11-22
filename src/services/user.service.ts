@@ -31,6 +31,12 @@ export class UserService {
     this.setUsers(updatedUsers);
   }
 
+  addUser(user: IUser): void {
+    const users: IUser[] = this.usersSubject.value;
+    const updatedUsers: IUser[] = [user, ...users];
+    this.setUsers(updatedUsers);
+  }
+
   loadUsers(): Observable<IUser[]> {
     return defer(() => {
       this.loaderService.showLoader();
