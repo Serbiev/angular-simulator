@@ -4,19 +4,23 @@ import { MessageService } from './message.service';
 import { inject, Injectable } from '@angular/core';
 import { UserApiService } from './user-api.service';
 import { BehaviorSubject, catchError, defer, finalize, Observable, of, tap } from 'rxjs';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  private STORAGE_KEY: string = 'users';
   private userApiService: UserApiService = inject(UserApiService);
   private messageService: MessageService = inject(MessageService);
   private loaderService: LoaderService = inject(LoaderService);
+  private storageService: StorageService = inject(StorageService);
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
 
   setUsers(users: IUser[]): void {
     this.usersSubject.next(users);
+    this.storageService.setItem(this.STORAGE_KEY, users);
   }
 
   getUsers(): Observable<IUser[]> {
@@ -39,6 +43,12 @@ export class UserService {
 
   loadUsers(): Observable<IUser[]> {
     return defer(() => {
+      const storedUsers: IUser[] | null = this.storageService.getItem<IUser[] | null>(
+        this.STORAGE_KEY,
+      );
+      if(storedUsers !== null) {
+        return of(storedUsers);
+      }
       this.loaderService.showLoader();
       return this.userApiService.getUsers();
     }).pipe(
