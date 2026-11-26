@@ -1,22 +1,28 @@
 import { Component, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 import { IUser } from '../interfaces/IUser';
 import { UserService } from '../services/user.service';
-import { AsyncPipe } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { UserCreateComponent } from '../user-create/user-create.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UsersFilterComponent } from '../users-filter/users-filter.component';
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe, UserCardComponent, UserCreateComponent],
+  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
 export class UsersPageComponent {
 
   private userService: UserService = inject(UserService);
+  private searchSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   users$: Observable<IUser[]> = this.userService.getUsers();
+
+  filteredUsers: Observable<IUser> = combineLatest([this.users$, this.searchSubject]).pipe(
+    map((users, search) => )
+  )
 
   constructor() {
     this.userService.loadUsers()
