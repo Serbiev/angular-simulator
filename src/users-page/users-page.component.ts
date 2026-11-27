@@ -20,9 +20,13 @@ export class UsersPageComponent {
   private searchSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   users$: Observable<IUser[]> = this.userService.getUsers();
 
-  filteredUsers: Observable<IUser> = combineLatest([this.users$, this.searchSubject]).pipe(
-    map((users, search) => )
-  )
+  filteredUsers$: Observable<IUser[]> = combineLatest([this.users$, this.searchSubject]).pipe(
+    map(([users, search]: [IUser[], string]) => {
+      return users.filter((user: IUser) => {
+        return user.name.toLocaleLowerCase().includes(search);
+      });
+    }),
+  );
 
   constructor() {
     this.userService.loadUsers()
@@ -36,6 +40,10 @@ export class UsersPageComponent {
 
   onCreateUser(user: IUser): void {
     this.userService.addUser(user);
+  }
+
+  onSearchChange(value: string): void {
+    this.searchSubject.next(value);
   }
 
 }

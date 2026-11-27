@@ -1,7 +1,8 @@
 <div class="users-page">
   <h1 class="user-title">Список Пользователей</h1>
   <app-user-create (createUser)="onCreateUser($event)" />
-  @if (users$ | async; as users) {
+  <app-users-filter (searchChange)="onSearchChange($event)" />
+  @if (filteredUsers$ | async; as users) {
     <div class="user-list">
       @for (user of users; track user.id) {
         <app-user-card [user]="user" (deleteUser)="onDeleteUser($event)" />

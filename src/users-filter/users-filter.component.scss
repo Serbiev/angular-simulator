@@ -1,0 +1,19 @@
+.users-filter-label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4a5d5a;
+}
+
+.users-filter-input {
+  width: 250px;
+  height: 30px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px 10px;
+  font-size: 20px;
+  color: #1e2423;
+  background-color: #fcfbfa;
+  border: 1px solid #d4cec3;
+  border-radius: 5px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
